@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from '../Components/header';
 import Spinner from '../Components/spinner';
+import ProtectedRoute from '../Components/protectedRoute';
 
 const HomePage = lazy(() => import('../Pages/homePage'));
 const LoginPage = lazy(() => import('../Pages/Auth/loginPage'));
@@ -34,15 +35,15 @@ function App(){
           <BrowserRouter>
           <Layout>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/profile/update" element={<UpdateProfilePage />} />
+            <Route path="/profile" element={<ProtectedRoute element={<ProfilePage />} />} />
+            <Route path="/profile/update" element={<ProtectedRoute element={<UpdateProfilePage />} />} />
             <Route path="/events" element={<EventsPage />} />
-            <Route path="/events/create" element={<NewEventPage />} />
+            <Route path="/events/create" element={<ProtectedRoute element={<NewEventPage />} requiredRole="organizer" />} />
             <Route path="/events/:id" element={<EventDetailsPage />} />
-            <Route path="/events/:id/update" element={<UpdateEventPage />} />
+            <Route path="/events/:id/update" element={<ProtectedRoute element={<UpdateEventPage />} requiredRole="organizer" />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
