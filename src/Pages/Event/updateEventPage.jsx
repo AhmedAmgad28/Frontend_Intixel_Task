@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
 import { Container, TextField, Button, Typography, Paper } from '@mui/material';
-import '../../styles/updateEventPage.css'; // Import the CSS file
+import '../../styles/updateEventPage.css';
 
 const UpdateEventPage = () => {
   const { id } = useParams(); // Get the event ID from URL
@@ -74,7 +74,7 @@ const UpdateEventPage = () => {
       });
       const result = await response.json();
       if (response.ok) {
-        // Redirect to event details or another page
+        // Redirect to event details page
         navigate(`/events/${id}`);
       } else {
         setErrors(result.errors || {});
