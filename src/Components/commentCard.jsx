@@ -3,7 +3,6 @@ import { Avatar, Typography, Card, CardContent } from '@mui/material';
 import '../styles/commentCard.css';
 
 const CommentCard = ({ profilePictureURL, name, role, commentText, createdAt }) => {
-    console.log("Profile Picture URL:", profilePictureURL);
   return (
     <Card className="comment-card">
       <CardContent>

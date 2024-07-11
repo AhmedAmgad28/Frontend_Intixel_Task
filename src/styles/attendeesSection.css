@@ -1,0 +1,13 @@
+.attendee-card {
+    margin: 10px 0;
+  }
+  
+  .attendee-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .attendee-info {
+    margin-left: 10px;
+  }
+  
