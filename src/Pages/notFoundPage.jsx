@@ -1,9 +1,9 @@
 import React from 'react';
+import '../styles/notFoundPage.css'
 
 const NotFoundPage = () => {
     return (
-        <div style={{marginTop:60}}>
-            Not Found
+        <div>
         </div>
     );
 }

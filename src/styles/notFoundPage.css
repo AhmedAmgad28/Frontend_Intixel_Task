@@ -1,0 +1,9 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    background-image: url('C:/Users/User/OneDrive/Desktop/intixel_task/src/img/err2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
