@@ -13,8 +13,8 @@ const AuthProvider = ({ children }) => {
     try {
       const response = await axios.get('http://localhost:5000/api/users/profile', {
         headers: {
-          'x-auth-token': token
-        }
+          'x-auth-token': token,
+        },
       });
       setUser(response.data);
     } catch (error) {
@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, register, logout }}>
+    <AuthContext.Provider value={{ user, token, login, register, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );
