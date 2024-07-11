@@ -52,15 +52,13 @@ const ProfilePage = () => {
         <Typography variant="h5" align="center" gutterBottom>
           {user.name}
         </Typography>
+        <Typography variant="body1" align="center" gutterBottom>Email: {user.email}</Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Typography variant="body1">Email: {user.email}</Typography>
+            <Typography variant="body1">Gender: {user.gender}</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="body1">Age: {user.age}</Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Typography variant="body1">Gender: {user.gender}</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="body1">Country: {user.country}</Typography>

@@ -45,7 +45,7 @@ const HomePage = () => {
         <h1>Upcoming Events</h1>
         <Grid container spacing={2}>
           {events.map(event => (
-            <Grid item xs={12} sm={6} md={4} key={event._id}>
+            <Grid item xs={12} sm={9} md={6} key={event._id}>
               <EventCard
                 id={event._id}
                 name={event.name}
