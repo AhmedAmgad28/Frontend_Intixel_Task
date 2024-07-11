@@ -36,17 +36,23 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: 'rgba(0, 16, 36, 255)' }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+      <Toolbar disableGutters>
+          <img
+            src="https://tse3.mm.bing.net/th?id=OIG1.YTA7lO.LFROWpPZv6DGQ&pid=ImgGn"
+            alt="Icon"
+            width="24"
+            height="24"
+            style={{ marginRight: '8px' }}
+          />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              marginRight: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -55,7 +61,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            EVENTMASTER
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
