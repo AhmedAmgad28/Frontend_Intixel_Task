@@ -42,7 +42,7 @@ function App(){
             <Route path="/profile/update" element={<ProtectedRoute element={<UpdateProfilePage />} />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/events/create" element={<ProtectedRoute element={<NewEventPage />} requiredRole="organizer" />} />
-            <Route path="/events/:id" element={<EventDetailsPage />} />
+            <Route path="/events/:eventID" element={<EventDetailsPage />} />
             <Route path="/events/:id/update" element={<ProtectedRoute element={<UpdateEventPage />} requiredRole="organizer" />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="*" element={<NotFoundPage />} />
