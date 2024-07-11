@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Event Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Event Management System is a web application that allows users to manage and attend events. It features role-based access, with two distinct user roles: Organizer and Customer. 
 
-In the project directory, you can run:
+- **Organizer**: Can create, delete, and update events, view the attendee list for each event, and update personal information.
+- **Customer**: Can update personal information, search for events, add comments to events, and attend events.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Event Management**:
+  - Organizers can create, update, and delete events.
+  - Customers can view event details and add comments.
+  - Both roles can search for events using various criteria.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Roles**:
+  - **Organizer**:
+    - Create, update, and delete events.
+    - View a list of attendees for events they organize.
+    - Update personal information.
+  - **Customer**:
+    - Update personal information.
+    - Search for events by name, organizer, location, date, or a combination.
+    - Add comments to events.
+    - Attend events.
 
-### `npm test`
+- **Protected Routes**:
+  - Routes are protected based on user roles:
+    - Organizers have access to event creation, updating, and deletion routes.
+    - Customers have access to event viewing, commenting, and attending routes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Endpoints
 
-### `npm run build`
+### Event Endpoints
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Create Event**: `POST /api/events`
+- **Update Event**: `PUT /api/events/:id`
+- **Delete Event**: `DELETE /api/events/:id`
+- **Get Event by ID**: `GET /api/events/:id`
+- **Get All Events**: `GET /api/events`
+- **Search Events**: `GET /api/events/search`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### User Endpoints
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Register**: `POST /api/users/register`
+- **Login**: `POST /api/users/login`
+- **Update Profile**: `PUT /api/users/profile`
 
-### `npm run eject`
+### Comment Endpoints
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Add Comment**: `POST /api/comments`
+- **Get Comments for Event**: `GET /api/comments/event/:eventId`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Attendee Endpoints
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Add Attendee**: `POST /api/events/:id/attendees`
+- **Remove Attendee**: `DELETE /api/events/:id/attendees`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Search Features
 
-## Learn More
+Users can search for events using the following criteria:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Event Name**: Search by the name of the event.
+- **Organizer**: Search by the name of the organizer.
+- **Location**: Search by the event location.
+- **Date**: Search by the event date.
+- **Combination**: Combine multiple criteria to refine the search.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Protected Routes
 
-### Code Splitting
+- **Organizer Routes**:
+  - `/events/create` (Create Event)
+  - `/events/:id/update` (Update Event)
+  - `/events/:id/delete` (Delete Event)
+  - `/events/:id/attendees` (View Attendees)
+  - `/profile` (Update Personal Information)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Customer Routes**:
+  - `/events` (Search and View Events)
+  - `/events/:id` (Event Details and Commenting)
+  - `/profile` (Update Personal Information)
 
-### Analyzing the Bundle Size
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Frontend**: React, Material-UI, Axios, React Router
+- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Authentication**: JSON Web Tokens (JWT)
 
-### Making a Progressive Web App
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-### Advanced Configuration
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or feedback, please contact [iahmedelkady@yahoo.com](mailto:iahmedelkady@yahoo.com).
