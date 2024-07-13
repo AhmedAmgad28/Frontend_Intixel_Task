@@ -18,6 +18,7 @@ const AttendeesSection = ({ attendees }) => {
 
         const promises = attendees.map(async (id) => {
           try {
+            // Get the information of each attendee
             const response = await axios.get(`http://localhost:5000/api/users/${id}`, {
               headers: {
                 'x-auth-token': token, // Include the token in the request headers

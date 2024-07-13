@@ -6,11 +6,12 @@ import SimpleBackdrop from '../../Components/spinner';
 import '../../styles/profilePage.css';
 
 const ProfilePage = () => {
-  const { user, token, logout, setUser } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
-  const [updated, setUpdated] = useState(false);
-  const navigate = useNavigate();
+  const { user, token, logout, setUser } = useContext(AuthContext); // Get user and authentication context
+  const [loading, setLoading] = useState(false); // State for loading spinner
+  const [updated, setUpdated] = useState(false); // State to trigger profile update
+  const navigate = useNavigate(); // Hook to navigate between routes
 
+  // Fetch user profile when there's an update
   useEffect(() => {
     const fetchUserProfile = async () => {
       if (!updated) return; // Only fetch if there's an update
@@ -35,11 +36,12 @@ const ProfilePage = () => {
     fetchUserProfile();
   }, [updated, token, logout, setUser]);
 
+  // Handle navigation to update profile page
   const handleUpdateProfile = () => {
     navigate('/profile/update', { state: { fromProfile: true } });
   };
 
-  if (loading) return <SimpleBackdrop />;
+  if (loading) return <SimpleBackdrop />; // Show loading spinner if loading
 
   return (
     <Container>

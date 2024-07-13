@@ -8,13 +8,14 @@ import EventCard from '../../Components/eventCard';
 import '../../styles/searchPage.css';
 
 const SearchPage = () => {
-  const [name, setName] = useState('');
-  const [organizer, setOrganizer] = useState('');
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const [events, setEvents] = useState([]);
-  const [validated, setValidated] = useState(false);
+  const [name, setName] = useState(''); // State for event name
+  const [organizer, setOrganizer] = useState(''); // State for organizer name
+  const [location, setLocation] = useState(''); // State for event location
+  const [date, setDate] = useState(''); // State for event date
+  const [events, setEvents] = useState([]); // State for search results
+  const [validated, setValidated] = useState(false); // State for form validation
 
+  // Handle form submission for searching events
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -25,12 +26,12 @@ const SearchPage = () => {
         const response = await axios.get(`http://localhost:5000/api/events/search`, {
           params: { name, organizer, location, date }
         });
-        setEvents(response.data);
+        setEvents(response.data); // Update state with search results
       } catch (error) {
-        console.error('Search failed', error);
+        console.error('Search failed', error); // Log any errors
       }
     }
-    setValidated(true);
+    setValidated(true); // Set form as validated
   };
 
   return (
@@ -78,7 +79,7 @@ const SearchPage = () => {
               />
             </Grid>
           </Grid>
-          <Button variant="contained" color="primary" type="submit" >
+          <Button variant="contained" color="primary" type="submit">
             Search
           </Button>
         </form>

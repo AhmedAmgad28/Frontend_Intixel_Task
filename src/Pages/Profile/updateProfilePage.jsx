@@ -5,8 +5,8 @@ import { Container, TextField, Button, Typography, Paper } from '@mui/material';
 import '../../styles/updateProfilePage.css';
 
 const UpdateProfilePage = () => {
-  const { user, setUser } = useContext(AuthContext);
-  const [formData, setFormData] = useState({
+  const { user, setUser } = useContext(AuthContext);  // Get user context
+  const [formData, setFormData] = useState({  // State for form data
     name: user.name || '',
     email: user.email || '',
     age: user.age || '',
@@ -15,14 +15,16 @@ const UpdateProfilePage = () => {
     country: user.country || '',
     city: user.city || '',
   });
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  const [errors, setErrors] = useState({}); // State for form errors
+  const navigate = useNavigate(); // Hook to navigate between routes
 
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Handle form submission for updating profile
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -48,7 +50,7 @@ const UpdateProfilePage = () => {
       });
       const result = await response.json();
       if (response.ok) {
-        setUser(result);
+        setUser(result); // Update user context with new profile data
         // Pass a state parameter to indicate that the profile was updated
         navigate('/profile', { state: { updated: true } });
       } else {

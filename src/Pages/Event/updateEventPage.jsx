@@ -27,6 +27,7 @@ const UpdateEventPage = () => {
         });
         const data = await response.json();
         if (response.ok) {
+          // Set fetched data to state
           setEventData({
             name: data.name || '',
             description: data.description || '',
@@ -44,11 +45,13 @@ const UpdateEventPage = () => {
     fetchEventData();
   }, [id, token]);
 
+  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEventData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,6 +67,7 @@ const UpdateEventPage = () => {
     }
 
     try {
+      // Make PUT request to update event
       const response = await fetch(`http://localhost:5000/api/events/${id}`, {
         method: 'PUT',
         headers: {

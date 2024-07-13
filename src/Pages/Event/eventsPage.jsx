@@ -10,11 +10,12 @@ import { AuthContext } from '../../Context/AuthContext';
 import '../../styles/eventsPage.css';
 
 const EventsPage = () => {
-  const [events, setEvents] = useState([]);
-  const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const [events, setEvents] = useState([]); // State to hold the list of events
+  const navigate = useNavigate(); // Hook for navigation
+  const { user } = useContext(AuthContext); // Get user from AuthContext
 
   useEffect(() => {
+    // Function to fetch events from the server
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/events');
@@ -35,6 +36,7 @@ const EventsPage = () => {
 
   return (
     <Container className="homepage-container">
+      {/* Show "Create New Event" button if user is an organizer */}
       {user && user.role === 'organizer' && (
         <Container className="create-event-button-container" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
           <Button
@@ -46,6 +48,7 @@ const EventsPage = () => {
           </Button>
         </Container>
       )}
+      {/* Search bar for events */}
       <Container className="search-bar-container">
         <TextField
           variant="outlined"
@@ -54,6 +57,7 @@ const EventsPage = () => {
           onClick={() => navigate('/search')}
         />
       </Container>
+      {/* Display upcoming events */}
       <Container>
         <h1>Upcoming Events</h1>
         <Grid container spacing={2}>

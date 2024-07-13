@@ -5,26 +5,26 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import '../styles/homePage.css'
-
+import '../styles/homePage.css';
 
 const HomePage = () => {
-  const [events, setEvents] = useState([]);
-  const navigate = useNavigate();
+  const [events, setEvents] = useState([]); // State to store upcoming events
+  const navigate = useNavigate(); // Hook to navigate between routes
 
+  // Fetch events from the API when the component mounts
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/events');
         const allEvents = response.data;
 
-        // Filter out past events and sort by date
+        // Filter out past events and sort them by date
         const upcomingEvents = allEvents.filter(event => new Date(event.dateAndTime) > new Date())
                                          .sort((a, b) => new Date(a.dateAndTime) - new Date(b.dateAndTime));
 
-        setEvents(upcomingEvents);
+        setEvents(upcomingEvents); // Update state with upcoming events
       } catch (error) {
-        console.error('Failed to fetch events:', error);
+        console.error('Failed to fetch events:', error); // Log any errors
       }
     };
 

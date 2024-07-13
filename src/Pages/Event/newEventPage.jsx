@@ -9,19 +9,21 @@ import axios from 'axios';
 import '../../styles/newEventPage.css';
 
 const NewEventPage = () => {
+  // Define state variables for form fields and validation
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [dateAndTime, setDateAndTime] = useState('');
-  const [validated, setValidated] = useState(false);
-  const { token } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const [validated, setValidated] = useState(false); // State for storing validation status
+  const { token } = useContext(AuthContext); // Get token from AuthContext
+  const navigate = useNavigate(); // Hook for navigation
 
+  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      e.stopPropagation();
+      e.stopPropagation(); // Stop further propagation if form is invalid
     } else {
       try {
         const newEvent = {
@@ -30,17 +32,18 @@ const NewEventPage = () => {
           location,
           dateAndTime,
         };
+        // Make POST request to create new event
         await axios.post('http://localhost:5000/api/events', newEvent, {
           headers: {
             'x-auth-token': token,
           },
         });
-        navigate('/');
+        navigate('/'); // Navigate to home page on success
       } catch (error) {
         console.error('Failed to create event', error);
       }
     }
-    setValidated(true);
+    setValidated(true); // Set form validation state
   };
 
   return (

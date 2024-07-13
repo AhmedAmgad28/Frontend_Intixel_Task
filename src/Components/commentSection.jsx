@@ -54,16 +54,18 @@ const CommentSection = ({ eventID }) => {
           createdAt={comment.createdAt}
         />
       ))}
-      <form className="comment-form" onSubmit={handleCommentSubmit}>
-        <input
-          type="text"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          placeholder="Write a comment..."
-          required
-        />
-        <button type="submit">Post</button>
-      </form>
+      {token && (
+        <form className="comment-form" onSubmit={handleCommentSubmit}>
+          <input
+            type="text"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            placeholder="Write a comment..."
+            required
+          />
+          <button type="submit">Post</button>
+        </form>
+      )}
     </div>
   );
 };
